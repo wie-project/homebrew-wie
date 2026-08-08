@@ -14,11 +14,13 @@
 class Wie < Formula
   desc "Experimental PE64 userspace emulator for macOS Apple Silicon"
   homepage "https://github.com/wie-project/wie"
-  url "https://github.com/wie-project/wie/releases/download/v#{version}/wie-#{version}-darwin-arm64.tar.gz"
+  # Version hardcoded in the URL (homebrew-core convention): `#{version}`
+  # interpolation inside `url` is evaluated before the `version` stanza runs,
+  # which produced an empty version in the download path (`v//wie--.tar.gz`).
+  # Bump this URL + the sha256 below on each release.
+  url "https://github.com/wie-project/wie/releases/download/v0.1.0/wie-0.1.0-darwin-arm64.tar.gz"
   version "0.1.0"
-  # PLACEHOLDER sha256 — no release exists yet. Fill with `shasum -a 256` of
-  # the first release artifact before installing.
-  sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+  sha256 "298c444b4e050dc0e2ada74b8b8e143f2da9bd21687b712197dad494e5515687"
 
   def install
     bin.install "wie"
